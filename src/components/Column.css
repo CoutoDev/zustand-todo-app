@@ -1,0 +1,10 @@
+.column {
+  background: var(--COLOR-GRAY-DARK);
+  border-radius: 4px;
+  color: #ffffff;
+  margin: 0 .5rem;
+  max-width: 20rem;
+  min-height: 20rem;
+  padding: .5rem;
+  width: 33%;
+}

@@ -1,0 +1,7 @@
+.App {
+  align-items: start;
+  background-color: var(--COLOR-GRAY);
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
