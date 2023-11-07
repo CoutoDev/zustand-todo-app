@@ -13,6 +13,18 @@ const store = (set) => ({
       state: TASK_STATE.PLANNED
     },
     {
+      title: "Test Task",
+      state: TASK_STATE.PLANNED
+    },
+    {
+      title: "Test Task",
+      state: TASK_STATE.PLANNED
+    },
+    {
+      title: "Test Task",
+      state: TASK_STATE.PLANNED
+    },
+    {
       title: "Test Task 2",
       state: TASK_STATE.ONGOING
     },
