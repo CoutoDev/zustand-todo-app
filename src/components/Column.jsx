@@ -20,7 +20,7 @@ export default function Column({ state }) {
         )}
       </div>
       {state === TASK_STATE.PLANNED && (
-        <AddTaskButton />
+        <AddTaskButton state={state} />
       )}
     </section>
   )
