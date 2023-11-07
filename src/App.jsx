@@ -1,13 +1,14 @@
 import './App.css';
 import Column from './components/Column'
+import { TASK_STATE } from './store'
 
 function App() {
 
   return (
     <div className='App'>
-      <Column state="PLANNED" />
-      <Column state="ONGOING" />
-      <Column state="DONE" />
+      <Column state={TASK_STATE.PLANNED} />
+      <Column state={TASK_STATE.ONGOING} />
+      <Column state={TASK_STATE.DONE} />
     </div>
   )
 }
