@@ -1,4 +1,5 @@
 import { create } from "zustand"
+import { persist } from 'zustand/middleware'
 
 const TASK_STATE = {
   PLANNED: 'PLANNED',
@@ -14,4 +15,6 @@ const store = (set) => ({
 
 export { TASK_STATE }
 
-export const useStore = create(store);
+export const useStore = create(persist(store, {
+  name: 'tasks'
+}));
