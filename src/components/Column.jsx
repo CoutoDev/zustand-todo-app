@@ -19,9 +19,7 @@ export default function Column({ state }) {
           <Task title={task.title} key={`${task.title.trim()}-${index}`} />
         )}
       </div>
-      {state === TASK_STATE.PLANNED && (
-        <AddTaskButton state={state} />
-      )}
+      <AddTaskButton state={state} />
     </section>
   )
 }
