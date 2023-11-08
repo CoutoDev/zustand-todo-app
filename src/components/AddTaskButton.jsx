@@ -15,10 +15,9 @@ const AddTaskButton = ({ state }) => {
   };
 
   const handleAddNewTask = () => {
-    addTask(`${taskInputRef.current.value}`, state);
+    addTask(taskInputRef.current.value, state);
     setIsModalOpen(false);
   };
-
   return (
     <>
       <button onClick={handleOnClick} className="bg-slate-900 p-2 w-full h-10 rounded flex gap-2">

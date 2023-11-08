@@ -16,7 +16,7 @@ export default function Column({ state }) {
     <section className="bg-slate-800 rounded text-white mx-2  min-h-[20rem] p-2 lg:w-1/3 w-full flex flex-col justify-between gap-2">
       <div className={`${state === TASK_STATE.PLANNED ? "max-h-64" : "max-h-72"} overflow-y-auto flex flex-col gap-2 p-1`}>
         {tasks.map((task, index) => 
-          <Task title={task.title} key={`${task.title.trim()}-${index}`} />
+          <Task title={task.title} state={task.state} key={`${task.title.trim()}-${task.state}-${index}`} />
         )}
       </div>
       <AddTaskButton state={state} />
