@@ -7,49 +7,9 @@ const TASK_STATE = {
 }
 
 const store = (set) => ({
-  tasks: [
-    {
-      title: "Test Task",
-      state: TASK_STATE.PLANNED
-    },
-    {
-      title: "Test Task",
-      state: TASK_STATE.PLANNED
-    },
-    {
-      title: "Test Task",
-      state: TASK_STATE.PLANNED
-    },
-    {
-      title: "Test Task",
-      state: TASK_STATE.PLANNED
-    },
-    {
-      title: "Test Task 2",
-      state: TASK_STATE.ONGOING
-    },
-    {
-      title: "Test Task 2",
-      state: TASK_STATE.ONGOING
-    },
-    {
-      title: "Test Task 2",
-      state: TASK_STATE.ONGOING
-    },
-    {
-      title: "Test Task 2",
-      state: TASK_STATE.ONGOING
-    },
-    {
-      title: "Test Task 2",
-      state: TASK_STATE.ONGOING
-    },
-    {
-      title: "Test Task 3",
-      state: TASK_STATE.DONE
-    },
-  ],
-  addTask: (title, state) => set((store) => ({ tasks: [...store.tasks, {title, state}]}))
+  tasks: [],
+  addTask: (title, state) => set((store) => ({ tasks: [...store.tasks, {title, state}]})),
+  deleteTask: (title, state) => set((store) => ({ tasks: store.tasks.filter(task => task.title !== title && task.state !== state)}))
 })
 
 export { TASK_STATE }
