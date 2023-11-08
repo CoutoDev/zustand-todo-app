@@ -12,7 +12,7 @@ export default function Task({ title, state }) {
   const handleOnDeleteIconClick = () => deleteTask(title, state) 
 
   return (
-    <div className="bg-slate-900 rounded text-white flex flex-col justify-between max-h-20 p-2 gap-2">
+    <section className="bg-slate-900 rounded text-white flex flex-col justify-between max-h-20 p-2 gap-2">
       <header className="flex justify-between">
         <h4>{ title }</h4>
         <button onClick={handleOnDeleteIconClick}><TrashIcon className="w-6 h-6 text-slate-950" /></button>
@@ -20,6 +20,6 @@ export default function Task({ title, state }) {
       <div className="flex justify-end">
         <span className={classNames("status", state)}>{ state }</span>
       </div>
-    </div>
+    </section>
   )
 }
