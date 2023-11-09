@@ -21,7 +21,7 @@ export default function Column({ state }) {
 
   return (
     <section
-      className={classNames("bg-slate-800 rounded text-white mx-2  min-h-[20rem] p-2 lg:w-1/3 w-full flex flex-col justify-between gap-2 border-2 border-dashed border-transparent", {"border-slate-600": isDropping})}
+      className={classNames("bg-slate-800 rounded text-white mx-2  min-h-[20rem] p-2 lg:w-1/3 w-full flex flex-col justify-between gap-2 border-2 border-dashed border-transparent", {"border-slate-400": isDropping})}
       onDragOver={(event) =>{
         event.preventDefault();
         setIsDropping(true)
