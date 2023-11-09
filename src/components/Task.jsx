@@ -13,6 +13,7 @@ export default function Task({ taskId, title, state }) {
   const inputRef = useRef(null)
   const deleteTask = useStore((store) => store.deleteTask)
   const editTask = useStore((store) => store.editTask)
+  const setDraggedTaskId = useStore((store) => store.setDraggedTaskId)
 
   const handleOnDeleteIconClick = () => deleteTask(taskId) 
   const handleOnEditIconClick = () => {
@@ -23,9 +24,10 @@ export default function Task({ taskId, title, state }) {
     setIsModalOpen(false);
   }
   const handleOnCloseModal = () => setIsModalOpen(false)
+  const handleDragTask = () => setDraggedTaskId(taskId)
 
   return (
-    <section className="bg-slate-900 rounded text-white flex flex-col justify-between max-h-20 p-2 gap-2">
+    <section className="bg-slate-900 rounded text-white flex flex-col justify-between max-h-20 p-2 gap-2 cursor-move" draggable onDragStart={handleDragTask}>
       <header className="flex justify-between">
         <h4>{ title }</h4>
         <button onClick={handleOnDeleteIconClick}><TrashIcon className="w-6 h-6 text-slate-950" /></button>
@@ -39,7 +41,7 @@ export default function Task({ taskId, title, state }) {
         onModalClose={handleOnCloseModal}
         title="Editar tarefa"
       >
-        <input className="rounded p-2 focus:outline-none" name="taskName" type="text" ref={inputRef} defaultValue={title} />
+        <input className="rounded p-2 focus:outline-none" name="taskName" type="text" ref={inputRef} defaultValue={title} required />
         <button className="bg-slate-900 p-2 w-full h-10 rounded text-center text-slate-200 font-semibold" onClick={handleEditTaskClick}>
         Editar
         </button>

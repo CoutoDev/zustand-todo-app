@@ -10,6 +10,7 @@ const TASK_STATE = {
 
 const store = (set) => ({
   tasks: [],
+  draggedTaskId: null,
   addTask: (title, state) => set((store) => ({ tasks: [...store.tasks, {id: uuidv4(), title, state}]})),
   deleteTask: (taskId) => set((store) => ({ tasks: store.tasks.filter(task => task.id !== taskId)})),
   editTask: (taskId, title) => set((store) => ({ tasks: store.tasks.map(task => {
@@ -21,7 +22,16 @@ const store = (set) => ({
     }
 
     return {...task}
-  })}))
+  })})),
+  setDraggedTaskId: (taskId) => set({
+    draggedTaskId: taskId
+  }),
+  moveTask: (taskId, state) => set((store) => ({
+    tasks: store.tasks.map((task) => task.id === taskId ? {
+      ...task,
+      state
+    } : task)
+  }))
 })
 
 export { TASK_STATE }
