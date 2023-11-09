@@ -30,8 +30,10 @@ export default function Task({ taskId, title, state }) {
     <section className="bg-slate-900 rounded text-white flex flex-col justify-between max-h-20 p-2 gap-2 cursor-move" draggable onDragStart={handleDragTask}>
       <header className="flex justify-between">
         <h4>{ title }</h4>
-        <button onClick={handleOnDeleteIconClick}><TrashIcon className="w-6 h-6 text-slate-950" /></button>
-        <button onClick={handleOnEditIconClick}><PencilIcon className="w-6 h-6 text-slate-950" /></button>
+        <section className="flex justify-end gap-2">
+          <button onClick={handleOnEditIconClick}><PencilIcon className="w-6 h-6 text-slate-950" /></button>
+          <button onClick={handleOnDeleteIconClick}><TrashIcon className="w-6 h-6 text-slate-950" /></button>
+        </section>
       </header>
       <div className="flex justify-end">
         <span className={classNames("status", state)}>{ state }</span>
