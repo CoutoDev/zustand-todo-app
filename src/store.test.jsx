@@ -1,10 +1,11 @@
-import { expect, test, vi, vitest } from "vitest"
+import { expect, test, vi } from "vitest"
 
 import { useStore } from "./store"
 import { useEffect } from "react"
 import { render } from "@testing-library/react"
 
-vitest.mock('uuid', () => ({ v4: () => '123456789' }));
+vi.mock('zustand')
+vi.mock('uuid', () => ({ v4: () => '123456789' }));
 
 const TestComponent = ({selector, effect}) => {
   const items = useStore(selector)
@@ -45,4 +46,27 @@ test("should add an item to the store and rerun the effect", () => {
       }
     )
   );
+})
+
+test("should add an item to the store and rerun the effect", () => {
+  const selector = (store) => ({ tasks: store.tasks, addTask: store.addTask, deleteTask: store.deleteTask });
+  let createdTask = false;
+  let currentItems = undefined;
+
+  const effect = vi.fn().mockImplementation((items) => {
+    currentItems = items;
+    if(!createdTask) {
+      items.addTask("a","b")
+      createdTask = true;
+    }
+
+    if(items.tasks.length) {
+      items.deleteTask('123456789')
+    }
+  });
+
+  render(<TestComponent selector={selector} effect={effect} />)
+
+  expect(effect).toHaveBeenCalledTimes(3);
+  expect(currentItems.tasks).toEqual([]);
 })
